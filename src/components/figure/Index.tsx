@@ -17,6 +17,8 @@ export default function Index(props: any) {
     border: "2px solid #000",
   };
 
+  console.log(image);
+
   return (
     <div className="figure">
       <img

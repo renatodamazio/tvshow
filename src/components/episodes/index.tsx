@@ -1,16 +1,19 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from "react";
+import React from "react";
 import Figure from "../figure/Index";
 
 export default function index(props: any) {
-  const [episodes] = useState(props);
   return (
     <div>
-      {episodes.map((episode: any) => (
-        <li>
-          <Figure {...props} />
+      {props.list.map((episode: any) => (
+        <li key={episode.id}>
+          <Figure {...episode.image} />
           {episode.name}
+          <br />
+          Season:
+          {' '}
+          {episode.season}
         </li>
       ))}
     </div>
