@@ -3,6 +3,7 @@
 import { useState } from "react";
 // eslint-disable-next-line import/no-unresolved
 import Figure from "../Figure/Index";
+// eslint-disable-next-line import/no-unresolved
 import Rate from "../rate/rate";
 
 /* eslint-disable react/react-in-jsx-scope */
