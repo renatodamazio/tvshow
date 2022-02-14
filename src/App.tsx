@@ -6,8 +6,8 @@ import Card from "./components/cards/Card";
 function App() {
   interface User {
     show: {
-      id: number,
-      name: string
+      id: number;
+      name: string;
     };
   }
 
@@ -22,18 +22,17 @@ function App() {
     setUser(response);
   }
 
-  useEffect(
-    // eslint-disable-next-line arrow-body-style
-    () => {
-      loadData();
-    },
-    [],
-  );
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <div>
-      {users?.map((item) => <Card key={item.show.id} info={item.show} />)}
+      {users?.map((item) => (
+        <li>
+          <Card key={item.show.id} info={item.show} />
+        </li>
+      ))}
     </div>
   );
 }

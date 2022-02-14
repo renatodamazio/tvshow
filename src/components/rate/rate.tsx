@@ -18,8 +18,8 @@ export default function rate(props: value) {
 
   return (
     <div>
-      {totalStars.map(() => (
-        <i className="fa-solid fa-star" style={style} />
+      {totalStars.map((index) => (
+        <i key={index} className="fa-solid fa-star" style={style} />
       ))}
     </div>
   );

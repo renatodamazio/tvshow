@@ -2,19 +2,23 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState } from "react";
 // eslint-disable-next-line import/no-unresolved
-import Figure from "../Figure/Index";
+import Figure from "../figure/Index";
 // eslint-disable-next-line import/no-unresolved
 import Rate from "../rate/rate";
+// eslint-disable-next-line import/no-unresolved
+import Title from "../title";
 
 /* eslint-disable react/react-in-jsx-scope */
 export default function Card<info>(props: info) {
   const [data] = useState<any>(props);
-
+  // This function will sanitize every string comes from API.
+  const stripTag = (text: string) => text.replace(/(<([^>]+)>)/gi, "");
   return (
-    <div>
+    <>
       <Figure {...data.info.image} size="medium" />
-      {data.info.name}
+      <Title type="h1">{data.info.name}</Title>
+      <Title type="p">{stripTag(data.info.summary)}</Title>
       <Rate {...data.info.rating} />
-    </div>
+    </>
   );
 }
