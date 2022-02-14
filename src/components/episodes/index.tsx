@@ -9,7 +9,7 @@ export default function index(props: any) {
     <div>
       {props.list.map((episode: any) => (
         <li key={episode.id}>
-          <Link to="/episode">
+          <Link to={`episode/${episode.id}`}>
             <Figure {...episode.image} />
             {episode.name}
             <br />
