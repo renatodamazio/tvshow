@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable arrow-body-style */
@@ -23,13 +24,16 @@ function App() {
   }
 
   const [users, setUser] = useState<[User]>();
+  const [showid, setShowId] = useState(0);
   const [espisodesList, setEpisodeLists] = useState<[EpisodeList]>();
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
   async function loadEpisodes(id: number) {
+    setShowId(id);
     setOpenModal(true);
     setLoading(true);
+
     const resp = await getEpisodes(id);
     setEpisodeLists(resp);
     setLoading(false);
@@ -51,7 +55,7 @@ function App() {
   return (
     <div>
       <Modal title="Episodes" open={openModal} handleOpen={setOpenModal}>
-        {!loading ? <Episodes list={espisodesList} /> : "loading"}
+        {!loading ? <Episodes id={showid} list={espisodesList} /> : "loading"}
       </Modal>
 
       {users?.map((item) => (

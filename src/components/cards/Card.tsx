@@ -15,8 +15,10 @@ export default function Card<info>(props: info) {
   const stripTag = (text: string) => text.replace(/(<([^>]+)>)/gi, "");
   return (
     <>
-      <Figure {...data.info.image} size="medium" />
+      <Figure {...data.info.image} size={data.size ? data.size : "medium"} />
       <Title type="h1">{data.info.name}</Title>
+      <Title type="h2">{data.info.airdate}</Title>
+      <Title type="h3">{data.info.season}</Title>
       <Title type="p">{stripTag(data.info.summary)}</Title>
       <Rate {...data.info.rating} />
     </>
