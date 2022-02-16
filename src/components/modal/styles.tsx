@@ -11,6 +11,7 @@ export const ModalBackground = styled.div`
     top: 0;
     left: 0;
     display: flex;
+    z-index: 9999;
     align-items: center;
     justify-content: center;
 `;
@@ -20,12 +21,12 @@ export const ModalContainer = styled.div`
     border-radius: 3px;
     width: 100%;
     max-width: 600px;
-    box-shadow: 0px 0px 3px #000;
+    box-shadow: 0px 0px 3px #eee;
     flex-wrap: wrap;
 `;
 
 export const ModalHeader = styled.div`
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #eee;
     padding: 20px;
     display: flex;
     width: 100%;
@@ -34,7 +35,7 @@ export const ModalHeader = styled.div`
 `;
 
 export const ModalBody = styled.div`
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #eee;
     padding: 20px;
     display: flex;
     max-height: 400px;
@@ -43,7 +44,7 @@ export const ModalBody = styled.div`
 `;
 
 export const ModalFooter = styled.div`
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #eee;
     padding: 20px;
     display: flex;
     width: 100%;

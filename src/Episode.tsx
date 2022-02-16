@@ -39,7 +39,7 @@ function Episode() {
       <Title type="h1">Espisode Infos</Title>
       {infos
         && infos.map((info: any) => (
-          <Card key={info.id} info={info} size="original" />
+          <Card key={info.id} info={info} size="medium" />
         ))}
     </div>
   );

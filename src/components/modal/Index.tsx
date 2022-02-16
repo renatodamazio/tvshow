@@ -3,6 +3,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from "react";
 import Title from "../title/index";
+import { Button } from "../layout/Ui";
 import {
   ModalBackground,
   ModalContainer,
@@ -20,17 +21,21 @@ export default function Index(props: any) {
     <ModalBackground>
       <ModalContainer>
         <ModalHeader>
-          <Title type="h1">{props.title}</Title>
-          <a
-            href="#!"
+          <Title type="h2">{props.title}</Title>
+          <Button
+            className="default"
+            style={{ borderRadius: "100%" }}
             onClick={() => props.handleOpen(false)}
-            className="modal-close"
           >
-            <i className="fa-solid fa-circle-xmark"> </i>
-          </a>
+            <i
+              className="fa-solid fa-circle-xmark"
+              style={{ fontSize: "30px", color: "black" }}
+            >
+              {" "}
+            </i>
+          </Button>
         </ModalHeader>
         <ModalBody>{props?.children}</ModalBody>
-        <ModalFooter> </ModalFooter>
       </ModalContainer>
     </ModalBackground>
   ) : (

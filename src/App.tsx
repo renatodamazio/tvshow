@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-unreachable */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
@@ -8,6 +9,7 @@ import Card from "./components/cards/Card";
 import Modal from "./components/modal/Index";
 import Episodes from "./components/episodes/index";
 import getEpisodes from "./api/getEpisodes";
+import { Button } from "./components/layout/Ui";
 
 function App() {
   interface User {
@@ -41,7 +43,7 @@ function App() {
 
   async function loadData() {
     const load = await fetch(
-      `${process.env.REACT_APP_API}/search/shows?q=powerpuff+girls`,
+      `${process.env.REACT_APP_API}/search/shows?q=powerpuff+girls`
     );
     const response = await load.json();
 
@@ -60,15 +62,15 @@ function App() {
 
       {users?.map((item) => (
         <li key={item.show.id}>
-          <Card info={item.show} />
-          <a
-            href="#!"
-            onClick={() => {
-              loadEpisodes(item.show.id);
-            }}
-          >
-            View Episodes
-          </a>
+          <Card info={item.show}>
+            <Button
+              onClick={() => {
+                loadEpisodes(item.show.id);
+              }}
+            >
+              View Episodes
+            </Button>
+          </Card>
         </li>
       ))}
     </div>

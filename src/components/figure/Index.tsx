@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from "react";
+import { CardFigure } from "../cards/card.styles";
 
 export default function Index(props: any) {
   interface imageProps {
@@ -11,12 +12,14 @@ export default function Index(props: any) {
 
   const [image] = useState<imageProps>({ ...props });
 
+  console.log(image.size);
+
   return (
-    <div className="figure">
+    <CardFigure className={props.className}>
       <img
         src={image.size === "medium" ? image.medium : image.original}
         alt=""
       />
-    </div>
+    </CardFigure>
   );
 }

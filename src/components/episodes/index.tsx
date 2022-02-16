@@ -3,22 +3,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Figure from "../figure/Index";
+import { Wrapper } from "../layout/Structure";
+import Title from "../title/index";
+import { List } from "./espisodes.styles";
 
 export default function index(props: any) {
   return (
-    <div>
+    <ul style={{ width: "100%" }}>
       {props.list.map((episode: any) => (
-        <li key={episode.id}>
+        <List key={episode.id}>
           <Link to={`episode/${props.id}/${episode.airdate}`}>
-            <Figure {...episode.image} />
-            {episode.name}
-            <br />
-            Season:
-            {' '}
-            {episode.season}
+            <Wrapper>
+              <Figure {...episode.image} className="small" />
+              <div style={{ paddingLeft: 10 }}>
+                <Title type="p">{episode.name}</Title>
+                <br />
+                Season:
+                {episode.season}
+              </div>
+            </Wrapper>
           </Link>
-        </li>
+        </List>
       ))}
-    </div>
+    </ul>
   );
 }
