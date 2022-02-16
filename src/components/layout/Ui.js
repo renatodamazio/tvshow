@@ -23,3 +23,16 @@ export const Button = styled.button`
     transform: translateY(-5px);
   }
 `;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 16px 16px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:focus {
+    border-color: 1px solid rgb(26, 92, 255);
+    box-shadow: 0 10px 20px 0px rgba(26, 92, 255, 0.5)
+  }
+`;

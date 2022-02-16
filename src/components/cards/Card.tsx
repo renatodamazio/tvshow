@@ -33,12 +33,13 @@ export default function Card(props: any) {
 
           <Title type="h2">{dateFormat(data.info.airdate)}</Title>
           <Title type="h2">
-            Season:
-            {data.info.season}
+            {data.info.season ? `Season: ${data.info.season}` : ""}
           </Title>
           <Space />
 
-          <Title type="p">{stripTag(data.info.summary)}</Title>
+          <Title type="p" className="card-paragraph">
+            {data.summary && stripTag(data.info.summary)}
+          </Title>
 
           <Space />
           <Rate {...data.info.rating} />

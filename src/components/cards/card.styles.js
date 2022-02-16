@@ -7,6 +7,10 @@ export const CardFigure = styled.div`
     border: 2px double #000;
     box-shadow: 0px 0px 0px #000;
     transition: 0.4s ease-in-out;
+
+    @media (max-width: 800px) {
+      max-width: 180px;
+    }
   }
 
   &.small {
@@ -32,15 +36,19 @@ export const CardWrapper = styled.div`
   border-radius: 8px;
   border: 1px solid #eee;
   color: #fff;
-  transition: .400s ease-in-out;
+  transition: 0.4s ease-in-out;
 
   &:hover {
     border: 1px solid #fff;
     box-shadow: 0px 0px 7px #ffff;
   }
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     flex-direction: column;
     align-items: center;
+
+    button {
+      width: 100%;
+    }
   }
 `;

@@ -62,7 +62,7 @@ function App() {
 
       {users?.map((item) => (
         <li key={item.show.id}>
-          <Card info={item.show}>
+          <Card info={item.show} summary={false}>
             <Button
               onClick={() => {
                 loadEpisodes(item.show.id);
