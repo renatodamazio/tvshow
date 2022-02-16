@@ -12,7 +12,7 @@ import { Container } from "./components/layout/Structure";
 import { Store } from "./store";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <Provider store={Store}>
       <Header />
       <Container>

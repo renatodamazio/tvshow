@@ -1,47 +1,62 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable arrow-body-style */
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Container } from "../layout/Structure";
 import { Input, Button } from "../layout/Ui";
-import { HeaderWrapper } from "./header.styles";
+import { HeaderWrapper, Logo } from "./header.styles";
 import Search from "../../api/search";
+import { UPDATE_SEARCH } from "../../store/actions/actionType";
 
 function useQuery() {
   const { search } = useLocation();
-
   return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
 export default function Index() {
   const [defaultValue, setDefaultValue] = useState<any>();
   const [searchValue, setSearchValue] = useState<any>();
+  const dispatch = useDispatch();
 
   const query = useQuery();
   const queryValue = query.get("search");
 
   useEffect(() => {
-    setDefaultValue(queryValue);
+    setDefaultValue(queryValue || "The Powerpuff Girls");
     setSearchValue(queryValue);
   }, []);
 
   const getShow = async () => {
+    window.location.search = `search=${searchValue
+      .toLowerCase()
+      .replace(/ {1}/gi, "+")}`;
+
     const response = await Search(searchValue);
+    dispatch({ type: UPDATE_SEARCH, newValue: response });
   };
 
   return (
     <HeaderWrapper>
       <Container className="row">
-        <Input
-          placeholder="Search a tv show"
-          onInput={(e) => setSearchValue((e.target as HTMLInputElement).value)}
-          defaultValue={defaultValue}
-        />
+        <Link to="/">
+          <Logo src="/images/logo.png" alt="Logo" />
+        </Link>
+        <div className="search-container">
+          <Input
+            placeholder="Search a tv show"
+            onInput={(e) => setSearchValue((e.target as HTMLInputElement).value)}
+            defaultValue={defaultValue}
+          />
+        </div>
         &nbsp;
-        <Button onClick={() => getShow()}>
-          <i className="fa-solid fa-magnifying-glass" />
-        </Button>
+        <div>
+          <Button type="submit" onClick={() => getShow()}>
+            <i className="fa-solid fa-magnifying-glass" />
+          </Button>
+        </div>
       </Container>
     </HeaderWrapper>
   );

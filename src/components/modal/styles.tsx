@@ -28,6 +28,7 @@ export const ModalContainer = styled.div`
 export const ModalHeader = styled.div`
     border-bottom: 1px solid #eee;
     padding: 20px;
+    color: #000;
     display: flex;
     width: 100%;
     align-items: center;

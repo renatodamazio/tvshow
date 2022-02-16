@@ -29,17 +29,13 @@ export default function Card(props: any) {
       <Wrapper className="row" style={{ padding: 16 }}>
         <div style={{ display: "inline-block" }}>
           <Title type="h1">{data.info.name}</Title>
-          <Space />
-
           <Title type="h2">{dateFormat(data.info.airdate)}</Title>
           <Title type="h2">
             {data.info.season ? `Season: ${data.info.season}` : ""}
           </Title>
           <Space />
 
-          <Title type="p" className="card-paragraph">
-            {data.summary && stripTag(data.info.summary)}
-          </Title>
+          <Title type="p">{stripTag(data.info.summary)}</Title>
 
           <Space />
           <Rate {...data.info.rating} />

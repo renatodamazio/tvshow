@@ -12,8 +12,6 @@ export default function Index(props: any) {
 
   const [image] = useState<imageProps>({ ...props });
 
-  console.log(image.size);
-
   return (
     <CardFigure className={props.className}>
       <img

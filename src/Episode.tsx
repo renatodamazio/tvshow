@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getEpisodeInfo from "./api/getEpisodeInfo";
 import Card from "./components/cards/Card";
-import Title from "./components/title/index";
+import Loading from "./components/Loading/Index";
 
 // import getEpisodes from "./api/getEpisodes";
 function Episode() {
@@ -23,11 +23,13 @@ function Episode() {
 
   const [infos, setInfos] = useState<Info>();
   const param = useParams();
+  const [showLoading, setShowLoading] = useState(true);
   const { id, date } = param;
 
   const getEpisodeInformation = async (id: any) => {
     const resp = await getEpisodeInfo(id, date);
     setInfos(resp);
+    setShowLoading(false);
   };
 
   useEffect(() => {
@@ -36,11 +38,14 @@ function Episode() {
 
   return (
     <div>
-      <Title type="h1">Espisode Infos</Title>
-      {infos
+      {!showLoading ? (
+        infos
         && infos.map((info: any) => (
-          <Card key={info.id} info={info} size="medium" />
-        ))}
+          <Card key={info.id} info={info} size="medium" sumary />
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

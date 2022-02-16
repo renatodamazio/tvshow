@@ -3,7 +3,14 @@
 /* eslint-disable arrow-body-style */
 import { UPDATE_SEARCH } from "../actions/actionType";
 
-const initalValue = {};
+const initalValue = [
+  {
+    show: {
+      id: 0,
+      name: "",
+    },
+  },
+];
 
 export const searchReducer = (state = initalValue, action) => {
   switch (action.type) {
