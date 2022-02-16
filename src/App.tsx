@@ -10,6 +10,7 @@ import Modal from "./components/modal/Index";
 import Episodes from "./components/episodes/index";
 import getEpisodes from "./api/getEpisodes";
 import { Button } from "./components/layout/Ui";
+import Search from "./api/search";
 
 function App() {
   interface User {
@@ -42,11 +43,7 @@ function App() {
   }
 
   async function loadData() {
-    const load = await fetch(
-      `${process.env.REACT_APP_API}/search/shows?q=powerpuff+girls`
-    );
-    const response = await load.json();
-
+    const response = await Search("powerpuff+girls");
     setUser(response);
   }
 
