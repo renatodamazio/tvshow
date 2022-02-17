@@ -1,10 +1,11 @@
 /* eslint-disable arrow-body-style */
+import axios from "axios";
+
 const getEpisodes = async (id, date) => {
-  const request = await fetch(
+  const request = await axios(
     `${process.env.REACT_APP_API}/shows/${id}/episodesbydate?date=${date}`,
-  );
-  const response = request.json();
-  return response;
+  ).then((response) => response);
+  return request.data;
 };
 
 export default getEpisodes;
