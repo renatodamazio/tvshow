@@ -53,7 +53,7 @@ export default function Index() {
         </div>
         &nbsp;
         <div>
-          <Button type="submit" onClick={() => getShow()}>
+          <Button onClick={() => getShow()}>
             <i className="fa-solid fa-magnifying-glass" />
           </Button>
         </div>

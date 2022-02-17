@@ -61,20 +61,22 @@ function App() {
       setUser(response);
       setNotFound(false);
     }
+
+    setLoading(false);
   }
 
   useEffect(() => {
-    loadData();
+    setLoading(true);
+    setTimeout(() => loadData(), 1000);
   }, []);
 
   useEffect(() => {
     if (updateSearchValue) {
       setUser(updateSearchValue);
       setNotFound(false);
-    } else {
-      setNotFound(true);
+      setLoading(false);
     }
-    setLoading(false);
+    setLoading(true);
   }, [updateSearchValue]);
 
   return (
@@ -98,8 +100,8 @@ function App() {
           </li>
         ))}
 
-      {notFound && <ResultNotFound />}
-      {loading && <Loading />}
+      { loading ? <Loading /> : ""}
+      {(notFound) && <ResultNotFound />}
     </div>
   );
 }
