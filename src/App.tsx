@@ -67,16 +67,15 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => loadData(), 1000);
+    loadData();
   }, []);
 
   useEffect(() => {
     if (updateSearchValue) {
       setUser(updateSearchValue);
       setNotFound(false);
-      setLoading(false);
     }
-    setLoading(true);
+    setLoading(false);
   }, [updateSearchValue]);
 
   return (
