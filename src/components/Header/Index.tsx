@@ -1,9 +1,16 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable arrow-body-style */
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import {
+  useLocation,
+  Link,
+  NavigationType,
+  useNavigate,
+} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Container } from "../layout/Structure";
 import { Input, Button } from "../layout/Ui";
@@ -19,6 +26,7 @@ function useQuery() {
 export default function Index() {
   const [defaultValue, setDefaultValue] = useState<any>();
   const [searchValue, setSearchValue] = useState<any>();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const query = useQuery();
@@ -30,9 +38,11 @@ export default function Index() {
   }, []);
 
   const getShow = async () => {
-    window.location.search = `search=${searchValue
+    const paramSearch = `search=${searchValue
       .toLowerCase()
       .replace(/ {1}/gi, "+")}`;
+
+    navigate(`/?${paramSearch}`);
 
     const response = await Search(searchValue);
     dispatch({ type: UPDATE_SEARCH, newValue: response });
@@ -47,7 +57,9 @@ export default function Index() {
         <div className="search-container">
           <Input
             placeholder="Search a tv show"
-            onInput={(e) => setSearchValue((e.target as HTMLInputElement).value)}
+            onInput={(e) =>
+              setSearchValue((e.target as HTMLInputElement).value)
+            }
             defaultValue={defaultValue}
           />
         </div>
